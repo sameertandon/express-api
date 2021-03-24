@@ -1,0 +1,26 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "generator-express",
+    "version": "1.0.0",
+    "description": "This is open API specification for generator-express."
+  },
+  "x-express-middlewares": {
+    "helmet": {},
+    "./middleware/test": {}
+  },
+  "paths": {
+    "/app/{config}/sam/{doc}": {
+      "post": {
+        "description": "Returns all configurations to be consumer by our UI client",
+        "summary": "get ui configurations",
+        "operationId": "setAppConfig",
+        "responses": {
+          "200": {
+            "description": "Invitee Registered"
+          }
+        }
+      }
+    }
+  }
+}

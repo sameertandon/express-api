@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "es2018",
+    "lib": ["es2018"],
+    "typeRoots": ["./node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "pretty": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "noEmit": false,
+    "esModuleInterop": true
+  },
+  "include": ["./src/**/*.ts", "index.ts"],
+  "exclude": [
+    "coverage",
+    "dist",
+    "node_modules"
+  ]
+}

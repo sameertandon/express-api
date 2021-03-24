@@ -1,0 +1,17 @@
+{
+  "extends": "eslint:recommended",
+  "rules": {
+    "indent": ["error", 4, { "SwitchCase": 1 , "MemberExpression": 1}],
+    "max-len": [ "WARN", 132 ],
+    "semi": ["error", "never"]
+  },
+  "env": {
+    "es6": true,
+    "mocha": true,
+    "node": true
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 8
+  }
+}

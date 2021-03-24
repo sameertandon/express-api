@@ -1,0 +1,238 @@
+{
+  "openapi": "3.0.1",
+  "servers": [{
+    "url": "https://{env}-myappname-1.{domain}/{basePath}",
+    "description": "API server",
+    "variables": {
+      "env": {
+        "enum": [
+          "dev",
+          "qa",
+          "perf",
+          "preprod",
+          "prod"
+        ],
+        "default": "dev",
+        "description": "this value is assigned by the service provider"
+      },
+      "domain": {
+        "enum": [
+          "test1.com",
+          "test2.com"
+        ],
+        "default": "test1.com"
+      },
+      "basePath": {
+        "default": "/v1/api"
+      }
+    }
+  }],
+  "info": {
+    "title": "generator-express",
+    "version": "1.0.0",
+    "description": "This is open API specification for generator-express."
+  },
+  "x-express-middlewares": {
+    "helmet": {}
+  },
+  "paths": {
+    "/app/{config}/sam/{doc}": {
+      "post": {
+        "description": "Returns all configurations to be consumer by our UI client",
+        "summary": "get ui configurations",
+        "operationId": "setAppConfig",
+        "responses": {
+          "200": {
+            "description": "Invitee Registered"
+          }
+        }
+      }
+    },
+    "/app/custom": {
+      "post": {
+        "x-express-controller": "appConfigSamDoc",
+        "description": "Returns all configurations to be consumer by our UI client",
+        "summary": "get ui configurations",
+        "operationId": "setAppConfig",
+        "responses": {
+          "200": {
+            "description": "Invitee Registered"
+          }
+        }
+      }
+    },
+    "/app/info": {
+      "get": {
+        "description": "Get app info",
+        "summary": "Get app info",
+        "operationId": "getInfo",
+        "responses": {
+          "200": {
+            "description": "Info"
+          }
+        }
+      },
+      "post": {
+        "description": "Update app info",
+        "summary": "Update app info",
+        "operationId": "postInfo",
+        "responses": {
+          "200": {
+            "description": "Info"
+          }
+        },
+        "parameters": [{
+          "name": "token",
+          "in": "query",
+          "required": true,
+          "description": "",
+          "schema": {
+            "type": "string"
+          }
+        }, {
+          "name": "body",
+          "required": true,
+          "in": "body",
+          "description": "",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/appInfoRes"
+          }
+        }]
+      }
+    },
+    "/ui/config": {
+      "post": {
+        "description": "Returns all configurations to be consumer by our UI client",
+        "summary": "get ui configurations",
+        "operationId": "setUIConfig",
+        "responses": {
+          "200": {
+            "description": "Invitee Registered"
+          }
+        }
+      },
+      "get": {
+        "description": "Returns all configurations to be consumer by our UI client",
+        "summary": "get ui configurations",
+        "operationId": "getUIConfig",
+        "responses": {
+          "200": {
+            "description": "Invitee Registered"
+          }
+        }
+      }
+    },
+    "/ui/redirect": {
+      "get": {
+        "description": "Redirect to other client app",
+        "summary": "Redirect to other client app",
+        "operationId": "getUIRedirect",
+        "responses": {
+          "200": {
+            "description": "Redirect to other client app"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "appInfoRes": {
+      "type": "object",
+      "properties": {
+        "appointment": {
+          "$ref": "#/definitions/appointment"
+        },
+        "signedInUser": {
+          "$ref": "#/definitions/signedInUser"
+        }
+      }
+    },
+    "region": {
+      "type": "string",
+      "enum": ["COL", "MID"]
+    },
+    "channelId": {
+      "type": "string",
+      "enum": ["WEB"]
+    },
+    "visitType": {
+      "type": "string",
+      "enum": ["OP"]
+    },
+    "appointmentIdType": {
+      "type": "string",
+      "enum": ["UCI", "GUID"]
+    },
+    "appointmentVisitType": {
+      "type": "string",
+      "enum": ["OP"]
+    },
+    "role": {
+      "type": "string",
+      "enum": ["PROVIDER"]
+    },
+    "applicationId": {
+      "type": "string",
+      "enum": ["TEST_APP"]
+    },
+    "appointment": {
+      "type": "object",
+      "properties": {
+        "appointmentId": {
+          "type": "string"
+        },
+        "appointmentIdType": {
+          "$ref": "#/definitions/appointmentIdType"
+        },
+        "appointmentDateTime": {
+          "type": "date-time"
+        },
+        "appointmentVisitType": {
+          "$ref": "#/definitions/appointmentVisitType"
+        },
+        "appointmentDuration": {
+          "type": "string"
+        },
+        "appointmentRegion": {
+          "$ref": "#/definitions/region"
+        },
+        "appointmentMeetingRoomNumber": {
+          "type": "string"
+        }
+      }
+    },
+    "signedInUser": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "idType": {
+          "$ref": "#/definitions/appointmentIdType"
+        },
+        "role": {
+          "$ref": "#/definitions/role"
+        },
+        "region": {
+          "$ref": "#/definitions/region"
+        },
+        "applicationId": {
+          "$ref": "#/definitions/applicationId"
+        },
+        "channelId": {
+          "$ref": "#/definitions/channelId"
+        },
+        "registerId": {
+          "type": "string"
+        },
+        "pexipParticipantUUID": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
