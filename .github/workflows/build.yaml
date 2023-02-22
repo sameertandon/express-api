@@ -1,0 +1,43 @@
+name: Contineous Integration
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+defaults:
+  run:
+    shell: bash
+    working-directory: ./
+# Modify the default permissions granted to GITHUB_TOKEN.
+# https://docs.github.com/en/actions/using-jobs/assigning-permissions-to-jobs
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Runs unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout Repository
+      - name: Install Node Repository
+        run: npm i
+      - name: Run Test Cases
+        run: npm run test
+  lint:
+    name: Runs Code Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        name: Checkout Repository
+      - name: Install Node Repository
+        run: npm i
+      - name: Run Linter
+        run: npx standard -v

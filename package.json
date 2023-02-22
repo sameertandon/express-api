@@ -10,7 +10,7 @@
     "tsc-example-app": "dyson examples/app/data/mock 9080 | CONFIG_PROFILE=localhost CONFIG_LABEL=master NODE_ENV=localhost LOG_LEVEL=debug node ./examples/app/server.js",
     "lint": "tslint --fix example/**/*.ts src/**/*.ts test/**/*.ts index.ts ",
     "precommit": "npm dedupe && npm run lint && npm run test",
-    "test": "npm run build && CONFIG_PROFILE=test CONFIG_LABEL=master NODE_ENV=test nyc mocha"
+    "test": "CONFIG_PROFILE=test CONFIG_LABEL=master NODE_ENV=test nyc mocha"
   },
   "keywords": [
     "openapi3",
@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "ajv": "^6.10.0",
-    "lodash": "4.17.15"
+    "lodash": "4.17.15",
+    "standard": "17.0.0"
   },
   "devDependencies": {
     "@istanbuljs/nyc-config-babel": "2.1.1",
