@@ -1,9 +1,10 @@
 class Info {
-
-    static async postInfo(req) {
-        return {code: "RET",
-            msg: "Errors Occured"}
+  static async postInfo (req) {
+    return {
+      code: 'RET',
+      msg: 'Errors Occured'
     }
+  }
 }
 
 module.exports = Info

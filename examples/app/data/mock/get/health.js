@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 module.exports = {
-	path: '/health',
-	template: {
-		'status': 'UP',
-	},
-};
+  path: '/health',
+  template: {
+    status: 'UP'
+  }
+}

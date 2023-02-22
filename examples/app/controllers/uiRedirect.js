@@ -1,8 +1,8 @@
 
 class UiRedirect {
-    static async getUIRedirect(ctx) {
-        ctx.res.redirect('http://googl.com')
-    }
+  static async getUIRedirect (ctx) {
+    ctx.res.redirect('http://googl.com')
+  }
 }
 
 module.exports = UiRedirect
