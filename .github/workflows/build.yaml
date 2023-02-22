@@ -1,4 +1,5 @@
 name: CI Build
+run-name: ${{ github.actor }} Feature Deployment
 on:
   workflow_dispatch:
   pull_request:
@@ -21,16 +22,20 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  build-4-ci:
     name: Runs Unit Tests
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['17','18']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
     steps:
       - uses: actions/checkout@v3
         name: Checkout Repository
-      - name: Use Node.js 18.x
+      - name: Use Node.js ${{ matrix.node_version }}
         uses: actions/setup-node@v1
         with:
-          node-version: 18.x
+          node-version: ${{ matrix.node_version }}
       - name: Cache node modules
         id: cache-npm
         uses: actions/cache@v3
