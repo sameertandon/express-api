@@ -1,4 +1,4 @@
-name: "Code Scanning - Action"
+name: "CI Code Scanning"
 
 on:
   workflow_dispatch:
