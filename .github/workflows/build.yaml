@@ -22,7 +22,7 @@ concurrency:
 
 jobs:
   test:
-    name: Runs unit Tests
+    name: Runs Unit Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
