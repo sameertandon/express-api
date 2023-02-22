@@ -8,7 +8,7 @@
     "local-start": "npm run build && npm run tsc-example-app",
     "build": "tsc --resolveJsonModule",
     "tsc-example-app": "dyson examples/app/data/mock 9080 | CONFIG_PROFILE=localhost CONFIG_LABEL=master NODE_ENV=localhost LOG_LEVEL=debug node ./examples/app/server.js",
-    "lint": "tslint --fix example/**/*.ts src/**/*.ts test/**/*.ts index.ts ",
+    "lint": "npx standard -v",
     "precommit": "npm dedupe && npm run lint && npm run test",
     "test": "CONFIG_PROFILE=test CONFIG_LABEL=master NODE_ENV=test nyc mocha"
   },
