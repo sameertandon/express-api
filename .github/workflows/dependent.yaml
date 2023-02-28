@@ -1,6 +1,8 @@
 # Set update schedule for GitHub Actions
 
 version: 2
+on:
+  workflow_dispatch:
 updates:
 
   - package-ecosystem: "github-actions"
